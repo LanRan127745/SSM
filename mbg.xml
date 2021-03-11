@@ -1,0 +1,33 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--配置连接到哪个数据库-->
+    <context id="simple" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mbg?serverTimezone=UTC"
+                        userId="root"
+                        password="123456"/>
+
+        <!--Pojo生成器
+            targetPackage：生成的pojo放在哪个包
+            targetProject：放在哪个工程下-->
+        <javaModelGenerator targetPackage="com.zzw.entity" targetProject=".\src"/>
+
+        <!--sql映射文件生成器
+            targetPackage：指定xml生成的地方-->
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\resources"/>
+
+        <!--dao接口生成器-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zzw.mapper" targetProject=".\src"/>
+
+        <!--指定要逆向生成哪个数据表
+            tableName：数据库表名
+            domainObjectName：生成的Pojo的类名
+            不指定的话默认就是数据库表名-->
+        <table tableName="dept" domainObjectName="Dept"/>
+        <table tableName="employee" domainObjectName="Employee"/>
+        <table tableName="salgrade" domainObjectName="SalGrade"/>
+        <table tableName="cat" domainObjectName="Cat"/>
+    </context>
+</generatorConfiguration>
